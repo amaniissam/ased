@@ -753,7 +753,7 @@ class MyNotes(CTkFrame):
         if not answer:
             return
         cursor = connection.cursor()
-        cursor.execute("DELETE FROM notes WHERE note_title = %s", (selected_note,))
+        cursor.execute("DELETE FROM notes WHERE note_title = %s AND user_id = %s", (selected_note, USER_ID))
         connection.commit()
         cursor.close()
         self.parent.switch_frame(MyNotes)
